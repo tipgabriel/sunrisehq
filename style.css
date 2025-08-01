@@ -538,11 +538,30 @@ footer {
         gap: 2rem;
     }
 
-    /* Ajustes específicos para botões da HQ em mobile */
+    /* ***************************************************
+       AJUSTE PARA O LEITOR DE HQ E O FORMULÁRIO (NOVO)
+       *************************************************** */
+    .comic-page {
+        min-height: 80vh; /* Altura mínima consistente para a página */
+        display: none;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .comic-page.active {
+        display: flex;
+    }
+    
+    .comic-page img {
+        max-width: 95%;
+        height: auto;
+        object-fit: contain; /* Garante que a imagem caiba no container sem distorção */
+    }
+
     .navigation-buttons {
         flex-direction: column; /* Empilha os botões verticalmente */
-        gap: 1rem; /* Espaçamento reduzido */
-        padding: 0 1rem; /* Adiciona um pequeno padding lateral */
+        gap: 1rem;
+        padding: 0 1rem;
     }
     
     .navigation-buttons button {
