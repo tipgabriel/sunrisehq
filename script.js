@@ -1,56 +1,66 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Menu Hambúrguer
     const hamburger = document.querySelector('.hamburger-menu');
     const mobileMenu = document.querySelector('.mobile-menu');
+    const overlay = document.querySelector('.menu-overlay'); // NOVO: Seleciona o overlay
+
+    // Função para fechar o menu
+    const closeMenu = () => {
+        mobileMenu.classList.remove('active');
+        hamburger.classList.remove('open');
+        overlay.classList.remove('active'); // Remove a classe 'active' do overlay
+        document.body.style.overflow = 'auto'; // Reabilita o scroll
+    };
 
     hamburger.addEventListener('click', () => {
         mobileMenu.classList.toggle('active');
-        hamburger.classList.toggle('open'); // Adiciona uma classe para animar o ícone
+        hamburger.classList.toggle('open');
+        overlay.classList.toggle('active'); // NOVO: Ativa o overlay
+
+        if (mobileMenu.classList.contains('active')) {
+            document.body.style.overflow = 'hidden'; // Impede o scroll do body
+        } else {
+            document.body.style.overflow = 'auto'; // Reabilita o scroll
+        }
     });
 
-    // Fechar o menu ao clicar em um link
-    mobileMenu.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-            mobileMenu.classList.remove('active');
-            hamburger.classList.remove('open');
+    // Fecha o menu ao clicar em um link ou no overlay
+    document.querySelectorAll('.mobile-menu a, .menu-overlay').forEach(item => {
+        item.addEventListener('click', () => {
+            closeMenu();
         });
     });
 
-    // Leitor de HQ
+    // Lógica de navegação da HQ (mantida)
     const comicPages = document.querySelectorAll('.comic-page');
     const prevButton = document.getElementById('prev-page');
     const nextButton = document.getElementById('next-page');
     let currentPageIndex = 0;
 
-    function showPage(index) {
-        comicPages.forEach((page, i) => {
-            page.classList.remove('active');
-            if (i === index) {
-                page.classList.add('active');
-            }
-        });
+    const showPage = (index) => {
+        comicPages.forEach(page => page.classList.remove('active'));
+        if (comicPages[index]) {
+            comicPages[index].classList.add('active');
+            currentPageIndex = index;
+        }
+        updateButtons();
+    };
 
-        // Habilita/desabilita botões
-        prevButton.disabled = index === 0;
-        nextButton.disabled = index === comicPages.length - 1;
-    }
+    const updateButtons = () => {
+        prevButton.disabled = currentPageIndex === 0;
+        nextButton.disabled = currentPageIndex === comicPages.length - 1;
+    };
 
     prevButton.addEventListener('click', () => {
         if (currentPageIndex > 0) {
-            currentPageIndex--;
-            showPage(currentPageIndex);
+            showPage(currentPageIndex - 1);
         }
     });
 
     nextButton.addEventListener('click', () => {
         if (currentPageIndex < comicPages.length - 1) {
-            currentPageIndex++;
-            showPage(currentPageIndex);
+            showPage(currentPageIndex + 1);
         }
     });
 
-    // Exibe a primeira página ao carregar
-    if (comicPages.length > 0) {
-        showPage(currentPageIndex);
-    }
+    showPage(currentPageIndex);
 });
