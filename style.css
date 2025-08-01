@@ -316,7 +316,7 @@ header {
 
 /*
     -------------------------------------------------------
-    SEÇÃO CONTATO
+    SEÇÃO CONTATO (FORMULÁRIO)
     -------------------------------------------------------
 */
 
@@ -422,9 +422,9 @@ footer {
         transition: all 0.3s ease-in-out;
     }
 
-    /* NOVO ESTILO PARA O MENU MOBILE: deslizando da direita */
+    /* Estilo do menu mobile: deslizando da direita */
     .mobile-menu {
-        display: flex; /* Mantido flex para o layout */
+        display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
@@ -433,13 +433,12 @@ footer {
         top: 0;
         right: -100%; /* Posição inicial fora da tela */
         height: 100vh;
-        width: 70%; /* Largura do menu */
+        width: 70%;
         background-color: var(--light-bg);
         z-index: 100;
-        transition: right 0.4s ease-in-out; /* Animação de deslize */
+        transition: right 0.4s ease-in-out;
     }
 
-    /* Ativa o menu quando a classe 'active' é adicionada */
     .mobile-menu.active {
         right: 0;
     }
@@ -483,7 +482,7 @@ footer {
         width: 100%;
     }
 
-    /* NOVO: Estilo para o overlay de fundo */
+    /* Estilo para o overlay de fundo */
     .menu-overlay {
         display: none;
         position: fixed;
