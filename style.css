@@ -184,7 +184,6 @@ header {
     box-shadow: 0 5px 15px rgba(255, 193, 7, 0.4);
 }
 
-/* O AJUSTE ESTÁ AQUI: Cor do texto no hover é mantida para ser visível */
 .cta-button:hover {
     color: var(--dark-bg);
     transform: scale(1.1);
@@ -432,8 +431,8 @@ footer {
         left: 0;
         right: 0;
         bottom: 0;
-        background-color: rgba(0, 0, 0, 0.95);
-        backdrop-filter: blur(8px);
+        /* AJUSTE AQUI: Fundo escuro sólido */
+        background-color: var(--dark-bg);
         z-index: 99;
         flex-direction: column;
         justify-content: center;
