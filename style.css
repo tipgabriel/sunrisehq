@@ -315,6 +315,71 @@ header {
 
 /*
     -------------------------------------------------------
+    SEÇÃO CONTATO
+    -------------------------------------------------------
+*/
+
+.contact-section {
+    background-color: var(--light-bg);
+}
+
+.contact-container {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.contact-intro {
+    font-size: 1.2rem;
+    color: #ccc;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: var(--primary-yellow);
+}
+
+.form-group input,
+.form-group textarea {
+    background-color: #333;
+    border: 2px solid #555;
+    color: var(--light-text);
+    padding: 1rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+}
+
+.submit-button {
+    align-self: center;
+    width: fit-content;
+    padding: 1.2rem 3rem;
+}
+
+/*
+    -------------------------------------------------------
     RODAPÉ
     -------------------------------------------------------
 */
@@ -341,45 +406,84 @@ footer {
     }
 
     .hamburger-menu {
-        display: block;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        width: 30px;
+        height: 25px;
         cursor: pointer;
         z-index: 101;
     }
-
+    
     .hamburger-menu .bar {
-        width: 25px;
+        width: 100%;
         height: 3px;
         background-color: var(--light-text);
-        margin: 5px 0;
-        transition: 0.4s;
+        transition: all 0.3s ease-in-out;
     }
 
+    /* Estilo do menu mobile em tela cheia */
     .mobile-menu {
         display: none;
-        flex-direction: column;
-        width: 100%;
-        background-color: rgba(0, 0, 0, 0.95);
         position: fixed;
-        top: 6rem;
+        top: 0;
         left: 0;
-        text-align: center;
-        padding-bottom: 1rem;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.95);
+        backdrop-filter: blur(8px);
         z-index: 99;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        animation: fadeIn 0.5s ease-in-out;
     }
 
     .mobile-menu.active {
         display: flex;
     }
+    
+    .mobile-menu ul {
+        list-style: none;
+        padding: 0;
+    }
 
     .mobile-menu li {
-        margin: 1rem 0;
+        margin: 2rem 0;
     }
 
     .mobile-menu a {
-        font-size: 1.5rem;
+        font-family: 'Bebas Neue', sans-serif;
+        font-size: 2.5rem;
+        color: var(--light-text);
+        position: relative;
+        transition: color 0.3s;
     }
 
-    /* Animação do ícone de hambúrguer */
+    .mobile-menu a::after {
+        content: '';
+        display: block;
+        width: 0;
+        height: 4px;
+        background: var(--primary-yellow);
+        transition: width 0.3s;
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+    }
+    
+    .mobile-menu a:hover,
+    .mobile-menu a:focus {
+        color: var(--primary-yellow);
+    }
+    
+    .mobile-menu a:hover::after,
+    .mobile-menu a:focus::after {
+        width: 100%;
+    }
+
+    /* Animação do ícone de hambúrguer para 'X' */
     .hamburger-menu.open .bar:nth-child(1) {
         transform: rotate(-45deg) translate(-5px, 6px);
     }
@@ -423,5 +527,11 @@ footer {
     .navigation-buttons button {
         padding: 0.8rem 2rem;
         font-size: 1rem;
+    }
+    
+    /* Animação de fade-in para o menu mobile */
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
     }
 }
