@@ -401,7 +401,6 @@ footer {
 */
 
 @media (max-width: 768px) {
-    /* Oculta o menu de desktop e mostra o hambúrguer e menu mobile */
     .desktop-menu {
         display: none;
     }
@@ -423,26 +422,26 @@ footer {
         transition: all 0.3s ease-in-out;
     }
 
-    /* Estilo do menu mobile em tela cheia */
+    /* NOVO ESTILO PARA O MENU MOBILE: deslizando da direita */
     .mobile-menu {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        /* AJUSTE AQUI: Fundo escuro sólido */
-        background-color: var(--dark-bg);
-        z-index: 99;
+        display: flex; /* Mantido flex para o layout */
         flex-direction: column;
         justify-content: center;
         align-items: center;
         text-align: center;
-        animation: fadeIn 0.5s ease-in-out;
+        position: fixed;
+        top: 0;
+        right: -100%; /* Posição inicial fora da tela */
+        height: 100vh;
+        width: 70%; /* Largura do menu */
+        background-color: var(--light-bg);
+        z-index: 100;
+        transition: right 0.4s ease-in-out; /* Animação de deslize */
     }
 
+    /* Ativa o menu quando a classe 'active' é adicionada */
     .mobile-menu.active {
-        display: flex;
+        right: 0;
     }
     
     .mobile-menu ul {
@@ -484,6 +483,25 @@ footer {
         width: 100%;
     }
 
+    /* NOVO: Estilo para o overlay de fundo */
+    .menu-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+        z-index: 99;
+        transition: opacity 0.4s ease-in-out;
+        opacity: 0;
+    }
+
+    .menu-overlay.active {
+        display: block;
+        opacity: 1;
+    }
+
     /* Animação do ícone de hambúrguer para 'X' */
     .hamburger-menu.open .bar:nth-child(1) {
         transform: rotate(-45deg) translate(-5px, 6px);
@@ -518,7 +536,7 @@ footer {
 
     /* Otimização da leitura da HQ em mobile */
     .comic-page img {
-        max-width: 95%; /* Pequeno espaçamento nas laterais para melhor visualização */
+        max-width: 95%;
     }
 
     .navigation-buttons {
@@ -528,11 +546,5 @@ footer {
     .navigation-buttons button {
         padding: 0.8rem 2rem;
         font-size: 1rem;
-    }
-    
-    /* Animação de fade-in para o menu mobile */
-    @keyframes fadeIn {
-        from { opacity: 0; }
-        to { opacity: 1; }
     }
 }
