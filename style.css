@@ -184,7 +184,9 @@ header {
     box-shadow: 0 5px 15px rgba(255, 193, 7, 0.4);
 }
 
+/* O AJUSTE ESTÁ AQUI: Cor do texto no hover é mantida para ser visível */
 .cta-button:hover {
+    color: var(--dark-bg);
     transform: scale(1.1);
     box-shadow: 0 8px 20px rgba(255, 193, 7, 0.6);
 }
