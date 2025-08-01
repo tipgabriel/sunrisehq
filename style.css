@@ -284,10 +284,14 @@ header {
 
 .navigation-buttons {
     display: flex;
+    justify-content: center; /* Alinha os botões horizontalmente */
     gap: 2rem;
+    width: 100%; /* Ocupa a largura total do container */
 }
 
 .navigation-buttons button {
+    flex: 1; /* Distribui o espaço igualmente entre os botões */
+    max-width: 250px; /* Limita a largura em telas grandes */
     background: linear-gradient(90deg, var(--primary-blue), #00aaff);
     color: var(--light-text);
     padding: 1rem 3rem;
@@ -322,6 +326,7 @@ header {
 
 .contact-section {
     background-color: var(--light-bg);
+    padding-bottom: 8rem;
 }
 
 .contact-container {
@@ -533,17 +538,14 @@ footer {
         gap: 2rem;
     }
 
-    /* Otimização da leitura da HQ em mobile */
-    .comic-page img {
-        max-width: 95%;
-    }
-
+    /* Ajustes específicos para botões da HQ em mobile */
     .navigation-buttons {
-        gap: 1rem;
+        flex-direction: column; /* Empilha os botões verticalmente */
+        gap: 1rem; /* Espaçamento reduzido */
+        padding: 0 1rem; /* Adiciona um pequeno padding lateral */
     }
     
     .navigation-buttons button {
-        padding: 0.8rem 2rem;
-        font-size: 1rem;
+        max-width: 100%; /* Os botões ocupam 100% da largura disponível */
     }
 }
