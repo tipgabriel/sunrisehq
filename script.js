@@ -1,36 +1,33 @@
 document.addEventListener('DOMContentLoaded', () => {
     const hamburger = document.querySelector('.hamburger-menu');
     const mobileMenu = document.querySelector('.mobile-menu');
-    const overlay = document.querySelector('.menu-overlay'); // NOVO: Seleciona o overlay
+    const overlay = document.querySelector('.menu-overlay');
 
-    // Função para fechar o menu
     const closeMenu = () => {
         mobileMenu.classList.remove('active');
         hamburger.classList.remove('open');
-        overlay.classList.remove('active'); // Remove a classe 'active' do overlay
-        document.body.style.overflow = 'auto'; // Reabilita o scroll
+        overlay.classList.remove('active');
+        document.body.style.overflow = 'auto';
     };
 
     hamburger.addEventListener('click', () => {
         mobileMenu.classList.toggle('active');
         hamburger.classList.toggle('open');
-        overlay.classList.toggle('active'); // NOVO: Ativa o overlay
+        overlay.classList.toggle('active');
 
         if (mobileMenu.classList.contains('active')) {
-            document.body.style.overflow = 'hidden'; // Impede o scroll do body
+            document.body.style.overflow = 'hidden';
         } else {
-            document.body.style.overflow = 'auto'; // Reabilita o scroll
+            document.body.style.overflow = 'auto';
         }
     });
 
-    // Fecha o menu ao clicar em um link ou no overlay
     document.querySelectorAll('.mobile-menu a, .menu-overlay').forEach(item => {
         item.addEventListener('click', () => {
             closeMenu();
         });
     });
 
-    // Lógica de navegação da HQ (mantida)
     const comicPages = document.querySelectorAll('.comic-page');
     const prevButton = document.getElementById('prev-page');
     const nextButton = document.getElementById('next-page');
