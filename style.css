@@ -552,15 +552,14 @@ footer {
     
     .comic-page {
         display: none;
-        flex-grow: 1; /* Permite que o container da página ocupe o espaço restante */
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
     }
 
     .comic-page.active {
         display: flex;
+        flex-grow: 1; /* Para ocupar o espaço disponível */
+        justify-content: center;
+        align-items: center;
+        width: 100%;
     }
     
     .comic-page img {
