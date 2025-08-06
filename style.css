@@ -537,25 +537,33 @@ footer {
     .character-grid {
         gap: 2rem;
     }
-
-    /* Ajuste FINAL para o leitor de HQ - AQUI ESTÁ A MUDANÇA */
+    
+    /* === AQUI ESTÁ O AJUSTE FINAL PARA O LEITOR DE HQ === */
+    .comic-container {
+        /* Garante que o container da imagem e dos botões tenha uma altura constante */
+        height: 85vh; 
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
     .comic-page {
         display: none;
+        flex-grow: 1; /* Permite que o container da página ocupe o espaço restante */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
     }
 
     .comic-page.active {
-        display: flex; /* Transforma em flexbox para centralizar */
-        flex-direction: column;
-        justify-content: center; /* Centraliza a imagem verticalmente */
-        align-items: center; /* Centraliza a imagem horizontalmente */
-        min-height: 85vh; /* Garante que o container tenha uma altura consistente */
-        width: 100%;
+        display: flex;
     }
     
     .comic-page img {
         max-width: 100%;
-        max-height: 100%; /* Garante que a imagem se ajuste ao container */
-        object-fit: contain; /* Evita distorção da imagem */
+        max-height: 100%; /* A imagem se ajusta ao tamanho máximo do container */
+        object-fit: contain; /* Ajusta a imagem sem distorcer, mantendo a proporção */
         border-radius: 5px;
         box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
     }
@@ -564,9 +572,11 @@ footer {
         flex-direction: column; /* Empilha os botões verticalmente */
         gap: 1rem;
         padding: 0 1rem;
+        margin-top: auto; /* Empurra os botões para a parte inferior do container flexível */
+        width: 100%;
     }
     
     .navigation-buttons button {
-        max-width: 100%; /* Os botões ocupam 100% da largura disponível */
+        max-width: 100%;
     }
 }
