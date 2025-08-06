@@ -59,5 +59,27 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // === NOVO CÓDIGO PARA NAVEGAÇÃO PELO TECLADO ===
+    document.addEventListener('keydown', (event) => {
+        // Ignora a função se o usuário estiver em um campo de texto para não atrapalhar
+        if (document.activeElement.tagName === 'INPUT' || document.activeElement.tagName === 'TEXTAREA') {
+            return;
+        }
+
+        // Verifica qual tecla foi pressionada
+        if (event.key === 'ArrowRight') {
+            // Avança a página se o botão "Próxima" não estiver desabilitado
+            if (!nextButton.disabled) {
+                nextButton.click();
+            }
+        } else if (event.key === 'ArrowLeft') {
+            // Volta a página se o botão "Anterior" não estiver desabilitado
+            if (!prevButton.disabled) {
+                prevButton.click();
+            }
+        }
+    });
+    // === FIM DO NOVO CÓDIGO ===
+
     showPage(currentPageIndex);
 });
