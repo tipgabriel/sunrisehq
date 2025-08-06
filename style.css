@@ -540,8 +540,11 @@ footer {
     
     /* === AQUI ESTÁ O AJUSTE FINAL PARA O LEITOR DE HQ === */
     .comic-container {
-        /* Garante que o container da imagem e dos botões tenha uma altura constante */
-        height: 85vh; 
+        /* Garante que o container da imagem e dos botões tenha uma altura constante e ocupe a maior parte da tela */
+        min-height: 95vh;
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 0 10px;
         display: flex;
         flex-direction: column;
         align-items: center;
